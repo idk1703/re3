@@ -20,7 +20,7 @@ jobs:
     steps:
     - name: Add msbuild to PATH
       uses: microsoft/setup-msbuild@v3
-    - uses: actions/checkout@v2
+    - uses: actions/checkout@v6
       with:
         submodules: 'true'
     - if: ${{ matrix.platform }} == "win-x86-librw_gl3_glfw-mss"
