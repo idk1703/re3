@@ -1,10 +1,7 @@
 
 name: reVC cmake devkitA64 (Nintendo Switch)
 on:
-  pull_request:
-  push:
-  release:
-    types: published
+  workflow_dispatch:
 jobs:
   build-nintendo-switch:
     runs-on: ubuntu-latest
