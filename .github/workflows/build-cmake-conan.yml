@@ -48,6 +48,9 @@ jobs:
         with:
           python-version: '3.x'
 
+      - name: Install Conan
+        uses: conan-io/setup-conan@v1
+
       - name: Install dependencies
         run: python -m pip install --upgrade pip pyyaml
 
