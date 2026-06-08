@@ -13,10 +13,10 @@ jobs:
     strategy:
       matrix:
         platform: [win-amd64-librw_d3d9-oal, win-amd64-librw_gl3_glfw-oal]
-        buildtype: [Debug, Release]
+        buildtype: [Release]
     steps:
     - name: Add msbuild to PATH
-      uses: microsoft/setup-msbuild@v1.0.2
+      uses: microsoft/setup-msbuild@v3
     - uses: actions/checkout@v6
       with:
         submodules: 'true'
