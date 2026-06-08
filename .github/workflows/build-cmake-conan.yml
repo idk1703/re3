@@ -47,6 +47,9 @@ jobs:
         with:
           python-version: '3.x'
 
+      - name: Install dependencies
+        run: python -m pip install --upgrade pip yaml
+
       - name: "Add os=playstation2 + gcc.version=3.2 to .conan/settings.yml"
         shell: python
         run: |
