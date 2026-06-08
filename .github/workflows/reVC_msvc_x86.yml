@@ -12,20 +12,20 @@ env:
   GLFW_URL: "https://github.com/glfw/glfw/releases/download/3.3.2/glfw-3.3.2.bin.WIN32.zip"
 jobs:
   build:
-    runs-on: windows-2019
+    runs-on: windows-2022
     strategy:
       matrix:
         platform: [win-x86-librw_d3d9-mss, win-x86-librw_gl3_glfw-mss, win-x86-librw_d3d9-oal, win-x86-librw_gl3_glfw-oal]
         buildtype: [Debug, Release, Vanilla]
     steps:
     - name: Add msbuild to PATH
-      uses: microsoft/setup-msbuild@v1.0.2
+      uses: microsoft/setup-msbuild@v3
     - uses: actions/checkout@v2
       with:
         submodules: 'true'
     - if: ${{ matrix.platform }} == "win-x86-librw_gl3_glfw-mss"
       name: Download glfw
-      uses: carlosperate/download-file-action@v1.0.3
+      uses: carlosperate/download-file-action@v2
       with:
         file-url: ${{env.GLFW_URL}}
     - if: ${{ matrix.platform }} == "win-x86-librw_gl3_glfw-mss"
@@ -51,7 +51,7 @@ jobs:
         mv ./vendor/mpg123/dist/Win32/libmpg123-0.dll ./gamefiles/
         mv ./vendor/openal-soft/dist/Win32/OpenAL32.dll ./gamefiles/
     - name: Upload artifact to actions
-      uses: actions/upload-artifact@v2
+      uses: actions/upload-artifact@v6
       with:
         name: reVC_${{matrix.buildtype}}_${{matrix.platform}}
         path: ./gamefiles/*
